@@ -184,14 +184,19 @@ footer[id] {
 .word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(0.55em);
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(0.9em);
+  animation: rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-play-state: paused;
+}
+
+.word.is-on {
+  animation-play-state: running;
 }
 
 .rise {
   opacity: 0;
-  transform: translateY(0.55em);
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(0.7em);
+  animation: rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .reveal {
@@ -849,6 +854,7 @@ footer[id] {
     animation: none;
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 
@@ -901,8 +907,11 @@ footer[id] {
 }
 
 @media (scripting: none) {
-  .reveal {
+  .reveal,
+  .word,
+  .rise {
     opacity: 1;
     transform: none;
+    animation: none;
   }
 }

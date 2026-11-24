@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { faqs } from "@/lib/content";
 import { Reveal } from "./Reveal";
+import { TextIn } from "./TextIn";
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
@@ -10,15 +11,19 @@ export function Faq() {
   return (
     <section id="faq" className="border-t border-white/10">
       <div className="mx-auto grid w-full max-w-[1200px] gap-12 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-12">
-        <Reveal className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
-          <p className="kicker">FAQ</p>
+        <div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+          <Reveal>
+            <p className="kicker">FAQ</p>
+          </Reveal>
           <h2 className="mt-4 font-serif text-[clamp(2.4rem,4.6vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-            Before we begin.
+            <TextIn text="Before we begin." />
           </h2>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted md:text-base">
-            The questions we are asked before a scope is signed. If yours is not here, write to us.
-          </p>
-        </Reveal>
+          <Reveal delay={80}>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted md:text-base">
+              The questions we are asked before a scope is signed. If yours is not here, write to us.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="lg:col-span-8">
           {faqs.map((item, index) => {

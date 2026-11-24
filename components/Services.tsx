@@ -1,17 +1,20 @@
 import { services } from "@/lib/content";
 import { Reveal } from "./Reveal";
+import { TextIn } from "./TextIn";
 
 export function Services() {
   return (
     <section id="services" className="border-t border-white/10">
       <div className="mx-auto w-full max-w-[1200px] px-5 py-24 md:px-8 md:py-32">
         <div className="grid items-end gap-8 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
-            <p className="kicker">Services</p>
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="kicker">Services</p>
+            </Reveal>
             <h2 className="mt-4 max-w-[12ch] font-serif text-[clamp(2.4rem,4.6vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-              Four ways we are useful.
+              <TextIn text="Four ways we are useful." />
             </h2>
-          </Reveal>
+          </div>
           <Reveal className="lg:col-span-5" delay={90}>
             <p className="max-w-md text-base leading-relaxed text-muted lg:ml-auto">
               Strategy, interface, systems, and the engineering that holds them. Each one is a way in. Most work uses more than one.

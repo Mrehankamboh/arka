@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { projectTypes } from "@/lib/content";
 import { PillButton } from "./PillButton";
 import { Reveal } from "./Reveal";
+import { TextIn } from "./TextIn";
 
 type Errors = Partial<Record<"name" | "email" | "project" | "message", string>>;
 
@@ -87,15 +88,19 @@ export function Contact() {
   return (
     <section id="contact" ref={sectionRef} className="border-t border-white/10">
       <div className="mx-auto grid w-full max-w-[1200px] gap-12 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-12">
-        <Reveal className="lg:col-span-5">
+        <div className="lg:col-span-5">
           <div ref={leftRef}>
-          <p className="kicker">Contact</p>
+          <Reveal>
+            <p className="kicker">Contact</p>
+          </Reveal>
           <h2 className="mt-4 font-serif text-[clamp(2.4rem,4.6vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-            Start a project.
+            <TextIn text="Start a project." />
           </h2>
-          <p className="mt-5 max-w-md text-sm leading-relaxed text-muted md:text-base">
-            Tell us what you are making. We read every note and reply within two working days. If we are not the right studio, we will say so.
-          </p>
+          <Reveal delay={80}>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-muted md:text-base">
+              Tell us what you are making. We read every note and reply within two working days. If we are not the right studio, we will say so.
+            </p>
+          </Reveal>
           <dl className="mt-10 grid gap-6 border-t border-white/10 pt-8">
             <div>
               <dt className="text-xs tracking-[0.18em] text-accent uppercase">Reply</dt>
@@ -111,7 +116,7 @@ export function Contact() {
             </div>
           </dl>
           </div>
-        </Reveal>
+        </div>
 
         <Reveal className="relative z-20 lg:col-span-7" delay={80}>
           <div ref={cardRef} className="contact-card">

@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { PillButton } from "@/components/PillButton";
 import { ProjectArt } from "@/components/ProjectArt";
+import { TextIn } from "@/components/TextIn";
 import { getProject, projects } from "@/lib/content";
 
 type PageProps = {
@@ -42,11 +43,15 @@ export default async function ProjectPage({ params }: PageProps) {
             All work
           </Link>
 
-          <p className="kicker mt-10">0{index + 1} — {project.category}</p>
+          <p className="rise kicker mt-10" style={{ animationDelay: "0.12s" }}>
+            0{index + 1} — {project.category}
+          </p>
           <h1 className="mt-4 max-w-[12ch] font-serif text-[clamp(3.4rem,8vw,7rem)] leading-[0.92] tracking-[-0.04em]">
-            {project.name}
+            <TextIn text={project.name} immediate delay={0.2} />
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{project.result}</p>
+          <p className="rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style={{ animationDelay: "0.4s" }}>
+            {project.result}
+          </p>
 
           <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-white/10">
             <ProjectArt name={project.name} tall />

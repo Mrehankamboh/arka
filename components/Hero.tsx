@@ -14,7 +14,7 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-5 pt-24 pb-8 md:px-10 md:pt-28 md:pb-10 lg:px-14">
-        <p className="rise kicker" style={{ animationDelay: "0.62s" }}>
+        <p className="rise kicker" style={{ animationDelay: "0.9s" }}>
           Digital product studio
         </p>
 
@@ -26,8 +26,8 @@ export function Hero() {
             {heroWords.map((word, index) => (
               <span
                 key={word.text}
-                className={`word mr-[0.16em] ${word.italic ? "italic text-foreground" : ""}`}
-                style={{ animationDelay: `${0.72 + index * 0.06}s` }}
+                className={`word is-on mr-[0.16em] ${word.italic ? "italic text-foreground" : ""}`}
+                style={{ animationDelay: `${1.02 + index * 0.08}s` }}
               >
                 {word.text}
               </span>
@@ -37,11 +37,11 @@ export function Hero() {
 
         <p
           className="rise mt-10 max-w-md text-base leading-relaxed text-muted md:mt-12 md:text-lg"
-          style={{ animationDelay: "1.2s" }}
+          style={{ animationDelay: "1.7s" }}
         >
           Strategy, interface, and engineering for teams who want the product to feel inevitable.
         </p>
-        <div className="rise mt-10 flex flex-col items-start gap-3 sm:flex-row md:mt-auto md:mb-10" style={{ animationDelay: "1.32s" }}>
+        <div className="rise mt-10 flex flex-col items-start gap-3 sm:flex-row md:mt-auto md:mb-10" style={{ animationDelay: "1.86s" }}>
           <PillButton href="#contact">Start a project</PillButton>
           <PillButton href="#work" tone="ghost">
             See the work
@@ -50,7 +50,7 @@ export function Hero() {
 
         <dl
           className="rise mt-10 grid gap-6 border-t border-white/10 pt-6 sm:grid-cols-3 md:mt-12 md:pt-8"
-          style={{ animationDelay: "1.45s" }}
+          style={{ animationDelay: "2s" }}
         >
           {proofs.map((item) => (
             <div key={item.label}>

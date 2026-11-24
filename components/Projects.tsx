@@ -2,18 +2,21 @@ import Link from "next/link";
 import { projects } from "@/lib/content";
 import { ProjectArt } from "./ProjectArt";
 import { Reveal } from "./Reveal";
+import { TextIn } from "./TextIn";
 
 export function Projects() {
   return (
     <section id="work" className="border-t border-white/10">
       <div className="mx-auto w-full max-w-[1200px] px-5 py-24 md:px-8 md:py-32">
         <div className="grid items-end gap-8 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
-            <p className="kicker">Work</p>
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="kicker">Work</p>
+            </Reveal>
             <h2 className="mt-4 max-w-[14ch] font-serif text-[clamp(2.4rem,4.6vw,4.25rem)] leading-[1.02] tracking-[-0.03em]">
-              Selected work, kept original.
+              <TextIn text="Selected work, kept original." />
             </h2>
-          </Reveal>
+          </div>
           <Reveal className="lg:col-span-5" delay={90}>
             <p className="max-w-md text-base leading-relaxed text-muted lg:ml-auto">
               Four products, each one kept original. Open a project to read how the work changed.
