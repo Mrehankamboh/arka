@@ -456,34 +456,41 @@ footer[id] {
 
 .about-stats {
   display: grid;
-  margin-top: 4rem;
-  overflow: hidden;
-  border: 1px solid rgba(243, 245, 248, 0.12);
-  border-radius: 1.75rem;
-  background:
-    linear-gradient(rgba(61, 126, 255, 0.85), rgba(61, 126, 255, 0.85)) top / 100% 1px no-repeat,
-    #10141c;
+  margin-top: 2.75rem;
 }
 
 .about-stat {
-  padding: 1.75rem 1.5rem 1.6rem;
-}
-
-.about-stat + .about-stat {
+  padding: 1.15rem 0 1.2rem;
   border-top: 1px solid rgba(243, 245, 248, 0.1);
 }
 
 .about-card {
+  position: relative;
   height: 100%;
+  padding: 1px;
+  overflow: hidden;
   border-radius: 1.75rem;
-  border: 1px solid rgba(243, 245, 248, 0.12);
+  background: rgba(243, 245, 248, 0.12);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-card-face {
+  display: grid;
+  gap: 1.15rem;
+  height: 100%;
+  border-radius: calc(1.75rem - 1px);
   background:
-    radial-gradient(90% 70% at 100% 0%, rgba(61, 126, 255, 0.1), transparent 52%),
+    radial-gradient(80% 90% at 100% 0%, rgba(61, 126, 255, 0.14), transparent 46%),
     #10141c;
-  padding: 1.75rem;
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease;
+  padding: 1.6rem 1.45rem 1.7rem;
+}
+
+.about-index {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #3d7eff;
 }
 
 @property --border-angle {
@@ -599,6 +606,7 @@ footer[id] {
 
 .service-card:hover .service-border,
 .service-card:focus-within .service-border,
+.about-card:hover .service-border,
 .project-card:hover .service-border,
 .project-card:focus-visible .service-border,
 .project-card.is-open .service-border,
@@ -656,15 +664,23 @@ footer[id] {
 @media (min-width: 640px) {
   .about-stats {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .about-stat {
-    padding: 2rem 1.75rem 1.85rem;
+    column-gap: 1.5rem;
   }
 
   .about-stat + .about-stat {
-    border-top: 0;
-    border-left: 1px solid rgba(243, 245, 248, 0.1);
+    border-top: 1px solid rgba(243, 245, 248, 0.1);
+  }
+
+  .about-card-face {
+    grid-template-columns: 4.25rem 1fr;
+    align-items: start;
+    padding: 1.85rem 1.9rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-stats {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -840,6 +856,7 @@ footer[id] {
   .pill-label,
   .faq-panel,
   .project-card,
+  .about-card,
   .service-card,
   .service-border,
   .service-mark::after,
