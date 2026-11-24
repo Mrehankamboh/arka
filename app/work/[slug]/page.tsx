@@ -33,67 +33,92 @@ export default async function ProjectPage({ params }: PageProps) {
 
   const index = projects.findIndex((item) => item.slug === project.slug);
   const next = projects[(index + 1) % projects.length];
+  const number = String(index + 1).padStart(2, "0");
+  const total = String(projects.length).padStart(2, "0");
+  const facts = [
+    { label: "Category", value: project.category },
+    { label: "Year", value: project.year },
+    { label: "Role", value: project.role },
+    { label: "Timeline", value: project.timeline },
+  ];
 
   return (
     <>
       <Navbar />
       <main id="main" className="relative z-10 flow-root bg-background">
-        <article className="mx-auto w-full max-w-[1200px] px-5 pt-32 pb-24 md:px-8 md:pt-40 md:pb-32">
-          <Link href="/#work" className="footer-link">
-            All work
-          </Link>
-
-          <p className="rise kicker mt-10" style={{ animationDelay: "0.12s" }}>
-            0{index + 1} — {project.category}
-          </p>
-          <h1 className="mt-4 max-w-[12ch] font-serif text-[clamp(3.4rem,8vw,7rem)] leading-[0.92] tracking-[-0.04em]">
-            <TextIn text={project.name} immediate delay={0.2} />
-          </h1>
-          <p className="rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style={{ animationDelay: "0.4s" }}>
-            {project.result}
-          </p>
-
-          <div className="mt-12 overflow-hidden rounded-[1.75rem] border border-white/10">
-            <ProjectArt name={project.name} tall />
-          </div>
-
-          <div className="mt-14 grid gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <p className="text-xs tracking-[0.18em] text-foreground uppercase">The work</p>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{project.detail}</p>
-              <ul className="mt-10 space-y-6">
-                {project.notes.map((note) => (
-                  <li key={note} className="border-t border-white/10 pt-6 text-sm leading-relaxed text-foreground md:text-base">
-                    {note}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <dl className="grid content-start gap-8 border-t border-white/10 pt-8 lg:col-span-4 lg:col-start-9 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-              <div>
-                <dt className="text-xs tracking-[0.18em] text-accent uppercase">Year</dt>
-                <dd className="mt-2 text-foreground">{project.year}</dd>
-              </div>
-              <div>
-                <dt className="text-xs tracking-[0.18em] text-accent uppercase">Role</dt>
-                <dd className="mt-2 text-foreground">{project.role}</dd>
-              </div>
-              <div>
-                <dt className="text-xs tracking-[0.18em] text-accent uppercase">Timeline</dt>
-                <dd className="mt-2 text-foreground">{project.timeline}</dd>
-              </div>
-            </dl>
-          </div>
-
-          <div className="mt-20 flex flex-col gap-8 border-t border-white/10 pt-10 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs tracking-[0.18em] text-muted uppercase">Next project</p>
-              <Link href={`/work/${next.slug}`} className="mt-3 inline-block font-serif text-4xl tracking-[-0.03em] text-foreground">
-                {next.name}
+        <article>
+          <header className="case-stage">
+            <div className="case-stage-bar">
+              <Link href="/#work" className="footer-link">
+                All work
               </Link>
+              <p className="text-xs tracking-[0.18em] text-muted">
+                {number} / {total}
+              </p>
             </div>
-            <PillButton href="/#contact">Start a project</PillButton>
+
+            <div className="case-stage-copy">
+              <div className="case-stage-main">
+                <p className="rise kicker" style={{ animationDelay: "0.12s" }}>
+                  {number} — {project.category}
+                </p>
+                <h1 className="mt-4 max-w-[10ch] font-serif text-[clamp(3.5rem,6.4vw,6.5rem)] leading-[0.9] tracking-[-0.045em]">
+                  <TextIn text={project.name} immediate delay={0.2} />
+                </h1>
+                <p
+                  className="rise mt-5 max-w-md font-serif text-[clamp(1.25rem,1.8vw,1.6rem)] leading-[1.3] tracking-[-0.03em]"
+                  style={{ animationDelay: "0.38s" }}
+                >
+                  {project.result}
+                </p>
+
+                <dl className="case-facts">
+                  {facts.map((fact) => (
+                    <div key={fact.label} className="case-fact">
+                      <dt className="text-xs tracking-[0.18em] text-accent uppercase">{fact.label}</dt>
+                      <dd className="mt-2 text-sm leading-snug text-foreground">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+
+            <div className="case-stage-art">
+              <ProjectArt name={project.name} size="stage" />
+            </div>
+          </header>
+
+          <div className="case-body">
+            <p className="kicker">The work</p>
+            <p className="case-lead">{project.detail}</p>
+
+            <ol className="case-notes">
+              {project.notes.map((note, noteIndex) => (
+                <li key={note} className="case-note">
+                  <p className="font-serif text-[1.7rem] leading-none tracking-[-0.03em] text-accent">
+                    {String(noteIndex + 1).padStart(2, "0")}
+                  </p>
+                  <p className="max-w-2xl text-sm leading-relaxed md:text-base">{note}</p>
+                </li>
+              ))}
+            </ol>
+
+            <Link href={`/work/${next.slug}`} className="case-next-link">
+              <div className="case-next-copy">
+                <p className="text-xs tracking-[0.18em] text-muted uppercase">Next project</p>
+                <p className="case-next-name mt-3 font-serif text-[clamp(2.6rem,4.5vw,4rem)] leading-none tracking-[-0.035em] transition-colors duration-300">
+                  {next.name}
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{next.result}</p>
+              </div>
+              <div className="case-next-art">
+                <ProjectArt name={next.name} size="stage" />
+              </div>
+            </Link>
+
+            <div className="mt-8">
+              <PillButton href="/#contact">Start a project</PillButton>
+            </div>
           </div>
         </article>
       </main>

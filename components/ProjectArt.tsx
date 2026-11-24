@@ -1,5 +1,20 @@
-export function ProjectArt({ name, tall = false }: { name: string; tall?: boolean }) {
-  const height = tall ? "h-72 md:h-[28rem]" : "h-52 md:h-60";
+export function ProjectArt({
+  name,
+  tall = false,
+  size,
+}: {
+  name: string;
+  tall?: boolean;
+  size?: "card" | "case" | "stage" | "thumb";
+}) {
+  const height =
+    size === "case" || size === "stage"
+      ? "h-full min-h-[20rem]"
+      : size === "thumb"
+        ? "h-28 md:h-32"
+        : tall
+          ? "h-72 md:h-[28rem]"
+          : "h-52 md:h-60";
 
   if (name === "Northline") {
     return (
