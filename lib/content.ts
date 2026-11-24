@@ -1,9 +1,9 @@
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const socialLinks = [
@@ -79,34 +79,74 @@ export const principles = [
 
 export const projects = [
   {
+    slug: "northline",
     name: "Northline",
     category: "Product",
+    year: "2026",
+    role: "Strategy, interface, engineering",
+    timeline: "Twelve weeks",
     result: "A private desk reduced to the one decision that matters each morning.",
     detail:
       "We replaced a crowded wealth dashboard with a single daily brief. Balances stay available, but they no longer lead the screen. The product asks one question, then gets out of the way.",
+    notes: [
+      "The morning brief leads. Balances, documents, and messages stay one step behind it.",
+      "The product asks one question each day, then leaves the rest of the screen quiet.",
+      "The handoff is a production front end the client's team can extend without us in the room.",
+    ],
   },
   {
+    slug: "halden",
     name: "Halden",
     category: "Brand system",
+    year: "2026",
+    role: "Identity, design system",
+    timeline: "Eight weeks",
     result: "A materials library architects can browse without a manual.",
     detail:
       "Type, swatches, and specification sheets share one grid. The system is quiet enough to sit beside the work, and strict enough that a new material does not invent its own layout.",
+    notes: [
+      "Every material uses the same page: name, sample, specification, and where it belongs.",
+      "The type and the grid are strict, so a new sheet does not start from a blank file.",
+      "Architects browse it the way they browse a library, without a guide beside them.",
+    ],
   },
   {
+    slug: "kite",
     name: "Kite",
     category: "Interface",
+    year: "2025",
+    role: "Interface, engineering",
+    timeline: "Fourteen weeks",
     result: "A field tool site engineers can use with gloves on.",
     detail:
       "Large targets, offline notes, and a camera flow that survives a weak signal. The interface is built for a job site: sun on the glass, one hand free, no time for a tutorial.",
+    notes: [
+      "Targets are large enough for gloves, and the type stays readable in full sun.",
+      "Notes and photos save on the device first, then send when the signal returns.",
+      "The first screen is the job. Settings and history stay out of the way until they are asked for.",
+    ],
   },
   {
+    slug: "meridian",
     name: "Meridian",
     category: "Web",
+    year: "2025",
+    role: "Editorial design, engineering",
+    timeline: "Ten weeks",
     result: "An editorial platform for a research collective.",
     detail:
       "Long-form reading, a calm archive, and a publishing flow the editors run without a developer on the call. The page is for the essay. Everything else recedes.",
+    notes: [
+      "The essay sets the measure, the type, and the pace. Navigation does not compete with it.",
+      "The archive is a quiet index: title, year, and author, nothing else on the way in.",
+      "Editors publish from a simple flow. A developer is not required for a new piece.",
+    ],
   },
 ] as const;
+
+export function getProject(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}
 
 export const faqs = [
   {

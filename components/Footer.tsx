@@ -86,12 +86,12 @@ export function Footer() {
               <p className="text-xs tracking-[0.18em] text-foreground uppercase">Studio</p>
               <ul className="mt-4 space-y-3 text-sm text-muted">
                 <li>
-                  <a href="#contact" className="footer-link">
+                  <a href="/#contact" className="footer-link">
                     New projects
                   </a>
                 </li>
                 <li>
-                  <a href="#about" className="footer-link">
+                  <a href="/#about" className="footer-link">
                     The studio
                   </a>
                 </li>

@@ -50,7 +50,7 @@ export function Navbar() {
     <>
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${bar}`}>
       <div className="relative z-50 mx-auto flex h-[4.5rem] w-full max-w-[1200px] items-center justify-between px-5 md:px-8">
-        <a href="#top" className="logo-link" aria-label="ARKA" onClick={() => setOpen(false)}>
+        <a href="/#top" className="logo-link" aria-label="ARKA" onClick={() => setOpen(false)}>
           <Logo />
         </a>
 
@@ -64,7 +64,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <PillButton href="#contact" size="sm">
+          <PillButton href="/#contact" size="sm">
             Start a project
           </PillButton>
         </div>
@@ -112,7 +112,7 @@ export function Navbar() {
           ))}
         </nav>
         <div className="mt-8">
-          <PillButton href="#contact" className="w-full" onClick={() => setOpen(false)}>
+          <PillButton href="/#contact" className="w-full" onClick={() => setOpen(false)}>
             Start a project
           </PillButton>
         </div>
