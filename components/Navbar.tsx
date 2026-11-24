@@ -8,6 +8,20 @@ import { PillButton } from "./PillButton";
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [red, setRed] = useState(false);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem("arka-accent") === "red";
+    setRed(stored);
+    document.documentElement.dataset.accent = stored ? "red" : "blue";
+  }, []);
+
+  const toggleAccent = () => {
+    const next = !red;
+    setRed(next);
+    document.documentElement.dataset.accent = next ? "red" : "blue";
+    window.localStorage.setItem("arka-accent", next ? "red" : "blue");
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -63,12 +77,22 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <PillButton href="/#contact" size="sm">
-            Start a project
-          </PillButton>
-        </div>
-
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="accent-toggle"
+            aria-pressed={red}
+            aria-label={red ? "Use blue" : "Use red"}
+            onClick={toggleAccent}
+          >
+            <span className="accent-swatch accent-swatch-blue" />
+            <span className="accent-swatch accent-swatch-red" />
+          </button>
+          <div className="hidden lg:block">
+            <PillButton href="/#contact" size="sm">
+              Start a project
+            </PillButton>
+          </div>
         <button
           type="button"
           className="nav-menu pill pill-ghost lg:hidden"
@@ -90,6 +114,7 @@ export function Navbar() {
             />
           </span>
         </button>
+        </div>
       </div>
     </header>
 
