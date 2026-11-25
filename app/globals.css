@@ -29,7 +29,7 @@ html[data-accent="red"] {
   --color-surface: var(--surface);
   --color-accent: var(--accent);
   --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-serif: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -42,6 +42,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }
 
 ::selection {
@@ -953,6 +959,60 @@ html[data-accent="red"] .accent-swatch-red {
   }
 }
 
+.statement {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 58% 90% at 6% 42%, rgba(var(--accent-rgb), 0.32), transparent 64%),
+    #07090f;
+}
+
+.statement-inner {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding: 6.5rem 1.5rem 7.5rem;
+}
+
+.statement-title {
+  max-width: 12em;
+  margin-top: 1.15rem;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 7vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.statement-line {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .statement-line {
+    display: inline;
+  }
+}
+
+.statement-title .italic {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.statement-lead {
+  max-width: 26rem;
+  margin-top: 1.85rem;
+  color: #b7c0cc;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.statement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 4.75rem;
+}
+
 .hero-shell {
   overflow-x: clip;
   background: #07090f;
@@ -964,10 +1024,12 @@ html[data-accent="red"] .accent-swatch-red {
   overflow: hidden;
   pointer-events: none;
   background:
+    radial-gradient(ellipse 46% 40% at 12% 78%, rgba(var(--accent-rgb), 0.08), transparent 70%),
     linear-gradient(rgba(243, 245, 248, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(243, 245, 248, 0.045) 1px, transparent 1px),
     #07090f;
-  background-size: 4.5rem 4.5rem, 4.5rem 4.5rem, auto;
+  background-size: auto, 4.5rem 4.5rem, 4.5rem 4.5rem, auto;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
 }
 
 .hero-glow {
@@ -976,45 +1038,47 @@ html[data-accent="red"] .accent-swatch-red {
   right: -8%;
   width: min(52rem, 70vw);
   height: min(46rem, 80vw);
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.38), transparent 68%);
+  background: none;
 }
 
 .hero-disc {
   position: absolute;
-  top: 2%;
-  right: -6%;
-  width: min(32rem, 42vw);
+  top: -18%;
+  right: -2%;
+  width: min(46rem, 52vw);
   aspect-ratio: 1;
   border-radius: 50%;
   background: conic-gradient(
-    from 200deg,
-    transparent 0deg 240deg,
-    rgba(var(--accent-rgb), 0.08) 270deg,
-    rgba(var(--accent-rgb), 0.85) 318deg,
-    rgba(var(--accent-rgb), 0.2) 348deg,
+    from 160deg,
+    transparent 0deg 210deg,
+    rgba(var(--accent-rgb), 0.15) 250deg,
+    rgba(var(--accent-rgb), 0.72) 300deg,
+    rgba(var(--accent-rgb), 0.28) 340deg,
     transparent 360deg
   );
-  mask: radial-gradient(circle, transparent 62%, #000 64%, #000 67.5%, transparent 70%);
+  mask: radial-gradient(circle, transparent 34%, #000 46%, #000 84%, transparent 96%);
   animation: hero-spin 26s linear infinite;
+  opacity: 0;
   pointer-events: none;
 }
 
 .hero-mountain {
   position: absolute;
   z-index: 1;
-  left: auto;
+  left: 0;
   right: 0;
   bottom: 0;
-  width: min(64rem, 72%);
-  height: min(15rem, 30vh);
+  width: 100%;
+  height: min(18rem, 34vh);
   object-fit: cover;
-  object-position: 72% 78%;
+  object-position: center 28%;
   pointer-events: none;
-  mask-image: linear-gradient(to top, #000 64%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 68%, transparent 100%);
+  filter: contrast(1.06);
 }
 
 html:not([data-accent="red"]) .hero-mountain {
-  filter: hue-rotate(198deg) saturate(0.55) brightness(0.9);
+  filter: sepia(0.4) hue-rotate(190deg) saturate(1.35) brightness(0.8) contrast(1.06);
 }
 
 .hero-layout {
@@ -1161,56 +1225,19 @@ html:not([data-accent="red"]) .hero-mountain {
 
 .hero-visual {
   position: relative;
-  width: min(100%, 32rem);
+  width: min(100%, 40rem);
   margin-left: auto;
-}
-
-.hero-orbit {
-  position: absolute;
-  z-index: 0;
-  top: 8%;
-  left: -10%;
-  width: 120%;
-  height: 62%;
-  pointer-events: none;
-}
-
-.hero-orbit-ring {
-  position: absolute;
-  inset: 6% 2%;
-  border: 1.5px solid rgba(var(--accent-rgb), 0.55);
-  border-radius: 50%;
-}
-
-.hero-orbit-dot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
-  offset-path: ellipse(46% 40% at 50% 50%);
-  offset-rotate: 0deg;
-  animation: hero-travel 16s linear infinite;
-}
-
-.hero-orbit-dot-b {
-  width: 0.4rem;
-  height: 0.4rem;
-  animation-duration: 16s;
-  animation-delay: -8s;
 }
 
 .hero-sculpture {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(100%, 24rem);
-  margin-right: auto;
+  width: min(92%, 20rem);
+  margin-right: 0.5rem;
   margin-left: auto;
-  filter: hue-rotate(198deg) saturate(1.25) drop-shadow(0 22px 18px rgba(0, 0, 0, 0.55));
+  filter: sepia(0.86) hue-rotate(190deg) saturate(2.12) brightness(1.05) contrast(1.22)
+    drop-shadow(0 22px 18px rgba(0, 0, 0, 0.5));
   animation: hero-float 8s ease-in-out infinite;
 }
 
@@ -1287,12 +1314,6 @@ html[data-accent="red"] .hero-sculpture {
   }
 }
 
-@keyframes hero-travel {
-  to {
-    offset-distance: 100%;
-  }
-}
-
 @media (min-width: 700px) {
   .hero-actions {
     flex-direction: row;
@@ -1314,8 +1335,8 @@ html[data-accent="red"] .hero-sculpture {
   }
 
   .hero-mountain {
-    height: min(18rem, 34vh);
-    object-position: center 70%;
+    height: min(20rem, 36vh);
+    object-position: center 24%;
   }
 
   .hero-line {
@@ -1327,40 +1348,37 @@ html[data-accent="red"] .hero-sculpture {
   }
 
   .hero-visual {
-    align-self: end;
-    margin-bottom: -2rem;
+    align-self: start;
+    margin-top: 8rem;
   }
 
   .hero-sculpture {
-    width: min(100%, 27rem);
+    width: min(100%, 28rem);
+    margin-right: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-layout {
-    grid-template-columns: minmax(26rem, 1.15fr) minmax(22rem, 0.85fr);
-    padding: 6.5rem 3rem 6.5rem;
+    grid-template-columns: minmax(28rem, 1.05fr) minmax(24rem, 0.95fr);
+    padding: 6.5rem 3rem 5rem;
     gap: 1rem;
   }
 
   .hero-sculpture {
-    width: min(100%, 30rem);
-  }
-
-  .hero-mountain {
-    height: min(20rem, 36vh);
-    object-position: center 68%;
+    width: min(96%, 30rem);
+    margin-right: 0;
   }
 
   .hero-chip-sat {
-    top: 0;
+    top: -18%;
     right: auto;
-    left: 0;
+    left: 2%;
   }
 
   .hero-chip-speed {
     right: 0;
-    bottom: 6%;
+    bottom: 20%;
   }
 }
 
@@ -1426,8 +1444,6 @@ html[data-accent="red"] .hero-sculpture {
   .service-rule::after,
   .service-ghost,
   .hero-sculpture,
-  .hero-orbit,
-  .hero-orbit-dot,
   .hero-disc,
   .hero-chip,
   .hero-cta {

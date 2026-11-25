@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: PageProps) {
             <Link href={`/work/${next.slug}`} className="case-next-link">
               <div className="case-next-copy">
                 <p className="text-xs tracking-[0.18em] text-muted uppercase">Next project</p>
-                <p className="case-next-name mt-3 font-serif text-[clamp(2.6rem,4.5vw,4rem)] leading-none tracking-[-0.035em] transition-colors duration-300">
+                <p className="case-next-name mt-3 font-serif text-[clamp(2.6rem,4.5vw,4rem)] font-bold leading-none tracking-[-0.035em] transition-colors duration-300">
                   {next.name}
                 </p>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{next.result}</p>

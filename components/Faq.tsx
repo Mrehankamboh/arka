@@ -44,7 +44,7 @@ export function Faq() {
                       aria-controls={panelId}
                       onClick={() => setOpen(isOpen ? null : index)}
                     >
-                      <span className="font-serif text-sm tracking-[0.14em] text-accent">{number}</span>
+                      <span className="font-serif text-sm font-normal tracking-[0.14em] text-accent">{number}</span>
                       <span className="font-serif text-xl tracking-[-0.02em] md:text-2xl">{item.question}</span>
                       <span
                         className={`faq-plus grid h-9 w-9 place-items-center rounded-full border border-white/15 ${isOpen ? "is-open" : ""}`}

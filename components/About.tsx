@@ -22,7 +22,7 @@ export function About() {
           <dl className="about-stats">
             {stats.map((stat) => (
               <div key={stat.label} className="about-stat">
-                <dt className="font-serif text-[clamp(2.2rem,3vw,2.8rem)] leading-none tracking-[-0.03em]">
+                <dt className="font-serif text-[clamp(2.2rem,3vw,2.8rem)] font-bold leading-none tracking-[-0.03em]">
                   {stat.value}
                 </dt>
                 <dd className="mt-2 text-sm text-muted">{stat.label}</dd>

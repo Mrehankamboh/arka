@@ -16,7 +16,7 @@ export function Hero() {
         <div className="hero-glow" />
         <div className="hero-disc" />
       </div>
-      <img className="hero-mountain" src="/hero/mountain.png?v=2" alt="" />
+      <img className="hero-mountain" src="/hero/mountain.png?v=5" alt="" />
 
       <div className="hero-layout">
         <div className="hero-copy">
@@ -71,12 +71,7 @@ export function Hero() {
         </div>
 
         <div className="hero-visual" aria-hidden="true">
-          <div className="hero-orbit">
-            <span className="hero-orbit-ring" />
-            <span className="hero-orbit-dot" />
-            <span className="hero-orbit-dot hero-orbit-dot-b" />
-          </div>
-          <img className="hero-sculpture" src="/hero/sculpture.png?v=7" alt="" />
+          <img className="hero-sculpture" src="/hero/sculpture.png?v=11" alt="" />
 
           <div className="hero-chip hero-chip-sat">
             <span className="hero-chip-mark">
