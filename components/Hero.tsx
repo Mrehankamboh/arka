@@ -1,65 +1,124 @@
-import { heroWords, proofs } from "@/lib/content";
-import { PillButton } from "./PillButton";
+const lines = [
+  [
+    { text: "Design.", hot: false },
+    { text: "Develop.", hot: false },
+  ],
+  [
+    { text: "Grow", hot: true },
+    { text: "Together.", hot: false },
+  ],
+];
 
 export function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
+    <section id="top" className="hero-shell relative">
       <div className="hero-scene" aria-hidden="true">
-        <div className="hero-wash hero-wash-a" />
-        <div className="hero-wash hero-wash-b" />
-        <div className="hero-wash hero-wash-c" />
-        <div className="hero-sheen" />
-        <div className="hero-grain" />
-        <div className="hero-vignette" />
+        <div className="hero-glow" />
+        <div className="hero-disc" />
       </div>
+      <img className="hero-mountain" src="/hero/mountain.png?v=2" alt="" />
 
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-5 pt-24 pb-8 md:px-10 md:pt-28 md:pb-10 lg:px-14">
-        <p className="rise kicker" style={{ animationDelay: "0.9s" }}>
-          Digital product studio
-        </p>
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="hero-badge rise" style={{ animationDelay: "0.9s" }}>
+            <span className="hero-badge-dot" />
+            Creative Studio
+            <span className="hero-badge-rule" />
+            <span className="hero-badge-quiet">Turn Ideas Into Impact</span>
+          </p>
 
-        <h1
-          className="mt-6 font-serif text-[clamp(3.6rem,10.2vw,9.75rem)] leading-[0.86] tracking-[-0.045em] md:mt-8"
-          aria-label="Products with a precise point of view."
-        >
-          <span aria-hidden="true">
-            {heroWords.map((word, index) => (
-              <span
-                key={word.text}
-                className={`word is-on mr-[0.16em] ${word.italic ? "italic text-foreground" : ""}`}
-                style={{ animationDelay: `${1.02 + index * 0.08}s` }}
-              >
-                {word.text}
+          <h1 className="hero-title" aria-label="Design. Develop. Grow Together.">
+            <span aria-hidden="true">
+              {lines.map((line) => (
+                <span className="hero-line" key={line[0].text}>
+                  {line.map((word, index) => (
+                    <span
+                      key={word.text}
+                      className={`word is-on${word.hot ? " hero-hot" : ""}`}
+                      style={{ animationDelay: `${1.02 + index * 0.08}s` }}
+                    >
+                      {word.text}
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </span>
+          </h1>
+
+          <p className="hero-lead rise" style={{ animationDelay: "1.7s" }}>
+            We craft stunning digital experiences, build powerful solutions, and help brands grow in the modern world.
+          </p>
+
+          <div className="hero-actions rise" style={{ animationDelay: "1.86s" }}>
+            <a className="hero-cta hero-cta-primary" href="#work">
+              Explore Our Work
+              <Arrow />
+            </a>
+            <a className="hero-cta hero-cta-ghost" href="#work">
+              <span className="hero-play" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="11" height="11">
+                  <path d="M6.2 4.1v7.8L12.4 8 6.2 4.1Z" fill="currentColor" />
+                </svg>
               </span>
-            ))}
-          </span>
-        </h1>
+              Watch Showreel
+            </a>
+          </div>
 
-        <p
-          className="rise mt-10 max-w-md text-base leading-relaxed text-muted md:mt-12 md:text-lg"
-          style={{ animationDelay: "1.7s" }}
-        >
-          Strategy, interface, and engineering for teams who want the product to feel inevitable.
-        </p>
-        <div className="rise mt-10 flex flex-col items-start gap-3 sm:flex-row md:mt-auto md:mb-10" style={{ animationDelay: "1.86s" }}>
-          <PillButton href="#contact">Start a project</PillButton>
-          <PillButton href="#work" tone="ghost">
-            See the work
-          </PillButton>
+          <div className="hero-trust rise" style={{ animationDelay: "2s" }}>
+            <img className="hero-faces" src="/hero/faces.png" alt="" />
+            <p className="hero-trust-line">Trusted by 100+ happy clients</p>
+          </div>
         </div>
 
-        <dl
-          className="rise mt-10 grid gap-6 border-t border-white/10 pt-6 sm:grid-cols-3 md:mt-12 md:pt-8"
-          style={{ animationDelay: "2s" }}
-        >
-          {proofs.map((item) => (
-            <div key={item.label}>
-              <dt className="text-sm text-foreground">{item.label}</dt>
-              <dd className="mt-2 max-w-[24ch] text-sm leading-relaxed text-muted">{item.text}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="hero-visual" aria-hidden="true">
+          <div className="hero-orbit">
+            <span className="hero-orbit-ring" />
+            <span className="hero-orbit-dot" />
+            <span className="hero-orbit-dot hero-orbit-dot-b" />
+          </div>
+          <img className="hero-sculpture" src="/hero/sculpture.png?v=7" alt="" />
+
+          <div className="hero-chip hero-chip-sat">
+            <span className="hero-chip-mark">
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path d="M2 12V8M6 12V5M10 12V3M14 12V7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </span>
+            <span>
+              <strong>100%</strong>
+              Client Satisfaction
+            </span>
+            <Arrow />
+          </div>
+
+          <div className="hero-chip hero-chip-speed">
+            <span className="hero-chip-mark">
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path d="M9 1.5 3.5 9H8l-1 5.5L13 7H8.5L9 1.5Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span>
+              <strong>3x</strong>
+              Faster Delivery
+            </span>
+            <Arrow />
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M3 8h10M9.5 4.5 13 8l-3.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
