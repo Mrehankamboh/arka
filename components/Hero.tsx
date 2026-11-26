@@ -1,11 +1,14 @@
 const lines = [
   [
-    { text: "Design.", hot: false },
-    { text: "Develop.", hot: false },
+    { text: "Products", hot: false },
+    { text: "with", hot: false },
+    { text: "a", hot: false },
   ],
   [
-    { text: "Grow", hot: true },
-    { text: "Together.", hot: false },
+    { text: "precise", hot: true },
+    { text: "point", hot: false },
+    { text: "of", hot: false },
+    { text: "view.", hot: false },
   ],
 ];
 
@@ -13,24 +16,26 @@ export function Hero() {
   return (
     <section id="top" className="hero-shell relative">
       <div className="hero-scene" aria-hidden="true">
-        <div className="hero-glow" />
-        <div className="hero-disc" />
+        <div className="hero-water-plane">
+          <img className="hero-water" src="/hero/water.jpg?v=4" alt="" />
+          <div className="hero-water-sheen" />
+          <div className="hero-water-tint" />
+          <div className="hero-water-edge" />
+        </div>
+        <img className="hero-stage" src="/hero/scene.jpg?v=4" alt="" />
       </div>
-      <img className="hero-mountain" src="/hero/mountain.png?v=5" alt="" />
 
       <div className="hero-layout">
         <div className="hero-copy">
           <p className="hero-badge rise" style={{ animationDelay: "0.9s" }}>
             <span className="hero-badge-dot" />
-            Creative Studio
-            <span className="hero-badge-rule" />
-            <span className="hero-badge-quiet">Turn Ideas Into Impact</span>
+            Digital product studio
           </p>
 
-          <h1 className="hero-title" aria-label="Design. Develop. Grow Together.">
+          <h1 className="hero-title" aria-label="Products with a precise point of view.">
             <span aria-hidden="true">
               {lines.map((line) => (
-                <span className="hero-line" key={line[0].text}>
+                <span className="hero-line" key={line.map((w) => w.text).join(" ")}>
                   {line.map((word, index) => (
                     <span
                       key={word.text}
@@ -46,33 +51,27 @@ export function Hero() {
           </h1>
 
           <p className="hero-lead rise" style={{ animationDelay: "1.7s" }}>
-            We craft stunning digital experiences, build powerful solutions, and help brands grow in the modern world.
+            Strategy, interface, and engineering for teams who want the product to feel inevitable.
           </p>
 
           <div className="hero-actions rise" style={{ animationDelay: "1.86s" }}>
-            <a className="hero-cta hero-cta-primary" href="#work">
-              Explore Our Work
+            <a className="hero-cta hero-cta-primary" href="#contact">
+              Start a project
               <Arrow />
             </a>
             <a className="hero-cta hero-cta-ghost" href="#work">
-              <span className="hero-play" aria-hidden="true">
-                <svg viewBox="0 0 16 16" width="11" height="11">
-                  <path d="M6.2 4.1v7.8L12.4 8 6.2 4.1Z" fill="currentColor" />
-                </svg>
-              </span>
-              Watch Showreel
+              See the work
             </a>
           </div>
 
           <div className="hero-trust rise" style={{ animationDelay: "2s" }}>
-            <img className="hero-faces" src="/hero/faces.png" alt="" />
-            <p className="hero-trust-line">Trusted by 100+ happy clients</p>
+            <p className="hero-trust-line hero-trust-proofs">
+              Product · Brand systems · Web
+            </p>
           </div>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <img className="hero-sculpture" src="/hero/sculpture.png?v=11" alt="" />
-
+        <div className="hero-floaters" aria-hidden="true">
           <div className="hero-chip hero-chip-sat">
             <span className="hero-chip-mark">
               <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
