@@ -56,11 +56,18 @@ export function Hero() {
 
           <div className="hero-actions rise" style={{ animationDelay: "1.86s" }}>
             <a className="hero-cta hero-cta-primary" href="#contact">
-              Start a project
-              <Arrow />
+              <span className="hero-cta-slide" aria-hidden="true" />
+              <span className="hero-cta-label">
+                Start a project
+                <Arrow />
+              </span>
             </a>
             <a className="hero-cta hero-cta-ghost" href="#work">
-              See the work
+              <span className="hero-cta-slide" aria-hidden="true" />
+              <span className="hero-cta-label">
+                See the work
+                <Arrow />
+              </span>
             </a>
           </div>
 

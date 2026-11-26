@@ -1224,21 +1224,41 @@ html[data-accent="red"] .hero-water {
 }
 
 .hero-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
-  gap: 0.45rem;
   height: 2.85rem;
   padding: 0 0.95rem;
+  overflow: hidden;
+  isolation: isolate;
   border-radius: 999px;
   font-size: 0.84rem;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background 0.35s ease;
+  cursor: pointer;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-cta-slide {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-cta-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-cta-primary {
@@ -1250,10 +1270,29 @@ html[data-accent="red"] .hero-water {
     0 0 24px rgba(var(--accent-rgb), 0.22);
 }
 
+.hero-cta-primary .hero-cta-slide {
+  background: color-mix(in srgb, white 24%, var(--accent));
+}
+
 .hero-cta-ghost {
   border: 1px solid rgba(243, 245, 248, 0.16);
   background: rgba(8, 10, 14, 0.45);
   color: #f3f5f8;
+}
+
+.hero-cta:hover .hero-cta-slide,
+.hero-cta:focus-visible .hero-cta-slide {
+  transform: translateX(0);
+}
+
+.hero-cta:hover .hero-cta-label,
+.hero-cta:focus-visible .hero-cta-label {
+  transform: translateX(3px);
+}
+
+.hero-cta-ghost:hover,
+.hero-cta-ghost:focus-visible {
+  border-color: transparent;
 }
 
 .hero-play {
@@ -1402,10 +1441,13 @@ html[data-accent="red"] .hero-stage {
   }
 
   .hero-cta {
-    gap: 0.65rem;
     height: 3.15rem;
     padding: 0 1.25rem;
     font-size: 0.95rem;
+  }
+
+  .hero-cta-label {
+    gap: 0.65rem;
   }
 }
 
@@ -1538,14 +1580,12 @@ html[data-accent="red"] .hero-stage {
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .hero-cta-primary:hover {
+  .hero-cta-primary:hover,
+  .hero-cta-ghost:hover {
     transform: translateY(-2px);
   }
-
-  .hero-cta-ghost:hover {
-    border-color: rgba(var(--accent-rgb), 0.7);
-  }
 }
+
 @keyframes rise {
   to {
     opacity: 1;
@@ -1601,7 +1641,9 @@ html[data-accent="red"] .hero-stage {
   .hero-stage,
   .hero-water,
   .hero-chip,
-  .hero-cta {
+  .hero-cta,
+  .hero-cta-slide,
+  .hero-cta-label {
     transition: none;
     animation: none;
   }
