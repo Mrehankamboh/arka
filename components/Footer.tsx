@@ -62,6 +62,10 @@ export function Footer() {
     <>
       <div id="footer-spacer" aria-hidden="true" />
       <footer ref={footerRef} id="footer" className="footer-sticky">
+        <div className="footer-bg" aria-hidden="true">
+          <img className="footer-bg-image" src="/footer/bg.png?v=1" alt="" />
+          <div className="footer-bg-shade" />
+        </div>
         <div className="footer-rise mx-auto w-full max-w-[1200px] px-5 py-14 md:px-8 md:py-16">
           <p className="font-serif text-[clamp(4.5rem,16vw,9.5rem)] font-bold leading-[0.85] tracking-[-0.045em]">ARKA</p>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-muted md:text-base">
