@@ -1216,22 +1216,25 @@ html[data-accent="red"] .hero-water {
 
 .hero-actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.55rem;
   margin-top: 1.75rem;
 }
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  height: 3.15rem;
-  padding: 0 1.25rem;
+  flex: 0 0 auto;
+  gap: 0.45rem;
+  height: 2.85rem;
+  padding: 0 0.95rem;
   border-radius: 999px;
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   font-weight: 500;
   text-decoration: none;
+  white-space: nowrap;
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
@@ -1395,8 +1398,14 @@ html[data-accent="red"] .hero-stage {
 
 @media (min-width: 700px) {
   .hero-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-cta {
+    gap: 0.65rem;
+    height: 3.15rem;
+    padding: 0 1.25rem;
+    font-size: 0.95rem;
   }
 }
 
