@@ -1311,11 +1311,9 @@ html[data-accent="red"] .hero-stage {
   filter: saturate(1.1) contrast(1.05) brightness(1.02);
 }
 
+/* Mobile: hide chips — no free space without covering the stage */
 .hero-floaters {
-  position: relative;
-  pointer-events: none;
-  height: 0;
-  z-index: 1;
+  display: none;
 }
 
 .hero-chip {
@@ -1323,14 +1321,14 @@ html[data-accent="red"] .hero-stage {
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  max-width: 15.5rem;
-  padding: 0.75rem 1.7rem 0.75rem 0.8rem;
+  gap: 0.55rem;
+  max-width: min(15.5rem, calc(100% - 1.5rem));
+  padding: 0.7rem 1.55rem 0.7rem 0.72rem;
   border: 1px solid rgba(243, 245, 248, 0.1);
   border-radius: 1.05rem;
-  background: rgba(8, 10, 14, 0.28);
+  background: rgba(8, 10, 14, 0.42);
   color: #d5dbe3;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   line-height: 1.25;
   white-space: nowrap;
   box-shadow:
@@ -1353,13 +1351,13 @@ html[data-accent="red"] .hero-stage {
 .hero-chip strong {
   display: block;
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .hero-chip-mark {
   display: grid;
-  width: 2rem;
-  height: 2rem;
+  width: 1.85rem;
+  height: 1.85rem;
   flex: none;
   place-items: center;
   border-radius: 0.7rem;
@@ -1369,16 +1367,17 @@ html[data-accent="red"] .hero-stage {
 }
 
 .hero-chip-sat {
-  top: auto;
-  bottom: 11rem;
-  left: auto;
-  right: 0.75rem;
+  top: 22%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
 }
 
 .hero-chip-speed {
-  top: auto;
-  right: 0.75rem;
-  bottom: 3.5rem;
+  top: 48%;
+  left: 46%;
+  right: auto;
+  bottom: auto;
   animation-delay: -3s;
 }
 
@@ -1443,22 +1442,36 @@ html[data-accent="red"] .hero-stage {
   .hero-floaters {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    display: block;
     height: auto;
     pointer-events: none;
+    z-index: 2;
   }
 
+  .hero-chip {
+    gap: 0.65rem;
+    padding: 0.75rem 1.7rem 0.75rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .hero-chip strong {
+    font-size: 1rem;
+  }
+
+  .hero-chip-mark {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Laptop+: dark gap between copy and rocks — never on the sculpture */
   .hero-chip-sat {
-    top: 38%;
-    bottom: auto;
-    right: 12%;
-    left: auto;
+    top: 22%;
+    left: 50%;
   }
 
   .hero-chip-speed {
-    top: auto;
-    right: 8%;
-    bottom: 22%;
+    top: 48%;
+    left: 46%;
   }
 }
 
@@ -1483,13 +1496,13 @@ html[data-accent="red"] .hero-stage {
   }
 
   .hero-chip-sat {
-    top: 40%;
-    right: 10%;
+    top: 24%;
+    left: 49%;
   }
 
   .hero-chip-speed {
-    right: 10%;
-    bottom: 24%;
+    top: 50%;
+    left: 45%;
   }
 }
 
@@ -1505,8 +1518,13 @@ html[data-accent="red"] .hero-stage {
   }
 
   .hero-chip-sat {
-    top: 42%;
-    right: 9%;
+    top: 26%;
+    left: 48%;
+  }
+
+  .hero-chip-speed {
+    top: 52%;
+    left: 44%;
   }
 }
 
